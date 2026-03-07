@@ -496,7 +496,11 @@
         background: rgba(0,0,0,0.5);
         z-index: 40;
       }
-
+      nav {
+        padding-top: env(safe-area-inset-top, 10px);
+        height: auto;
+        min-height: 56px;
+      }
       .sidebar-overlay.open { display: block; }
 
       /* Chat area takes full width */
