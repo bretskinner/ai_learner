@@ -484,7 +484,9 @@
 
       /* Tighter chat padding on mobile */
       #messages { padding: 16px; }
-      .input-area { padding: 12px 16px 16px; }
+      /* mobile spacing by footer */
+      .input-area { padding: 12px 16px 48px; }
+      #footer-credit { width: 100% !important; left: 0 !important; text-align: center !important; }
 
       /* Bubbles can be wider on small screens */
       .bubble { max-width: 85%; }
@@ -535,7 +537,7 @@
       </div>
     </div>
   </div>
-   <div id="footer-credit" style="position:fixed; bottom:16px; left:0; width:260px; text-align:center; font-size:0.7rem; color:var(--muted); font-family:'DM Mono',monospace; z-index:5;">
+    <div id="footer-credit" style="position:fixed; bottom:16px; left:0; width:260px; text-align:center; font-size:0.7rem; color:var(--muted); font-family:'DM Mono',monospace; z-index:5;">
     crafted by Bret Skinner
   </div>
   <div class="modal-overlay" id="modal">
