@@ -702,11 +702,30 @@
     // --- HISTORY ---
     function saveHistory() { localStorage.setItem('ai_history', JSON.stringify(history)); }
 
-    function clearHistory() {
+   function clearHistory() {
       if (!confirm('Clear all conversation history and start fresh?')) return;
       history = [];
       localStorage.removeItem('ai_history');
       document.getElementById('messages').innerHTML = '';
+      
+      // Kick off a fresh lesson
+      setTimeout(async () => {
+        const learnedStr = topics.length > 0
+          ? `Topics I've already learned: ${topics.join(', ')}. Teach me something new.`
+          : 'Start my session — teach me something new about AI today!';
+        showTyping();
+        try {
+          const reply = await callBackend([{ role: 'user', content: learnedStr }]);
+          history.push({ role: 'user', content: learnedStr });
+          history.push({ role: 'assistant', content: reply });
+          saveHistory();
+          removeTyping();
+          addMessage('assistant', reply);
+        } catch (e) {
+          removeTyping();
+          addMessage('assistant', 'Could not connect. Is the server running?');
+        }
+      }, 300);
     }
 
     // --- CHAT UI ---
