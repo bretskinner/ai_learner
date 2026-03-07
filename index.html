@@ -108,13 +108,13 @@
       text-transform: uppercase;
       margin-bottom: 12px;
     }
-    #footer-credit { 
-        position: static !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 8px 0 12px;
-        border-top: 1px solid var(--border);
-      }
+  #footer-credit {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      padding: 6px 0 10px;
+    }
 
     .streak-card {
       background: linear-gradient(135deg, rgba(124,106,255,0.15), rgba(255,106,155,0.1));
@@ -450,7 +450,21 @@
       font-size: 1rem;
       line-height: 1;
     }
-
+    @media (min-width: 641px) {
+      #footer-credit { display: none; }
+      .sidebar::after {
+        content: 'crafted by Bret Skinner';
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 0.7rem;
+        color: var(--muted);
+        font-family: 'DM Mono', monospace;
+      }
+      .sidebar { position: relative; }
+    }
     @media (max-width: 640px) {
       /* Navbar: hide pill, show toggle */
       .nav-pill { display: none; }
@@ -537,15 +551,13 @@
 
     <div class="chat-area">
       <div id="messages"></div>
-      <div class="input-area">
-        <input id="user-input" type="text" placeholder="Ask anything about AI..." />
-        <button id="send-btn">Send →</button>
+        <div class="bottom-area">
+        <div class="input-area">
+          <input id="user-input" type="text" placeholder="Ask anything about AI..." />
+          <button id="send-btn">Send →</button>
+        </div>
+        <div id="footer-credit">crafted by Bret Skinner</div>
       </div>
-    </div>
-  </div>
-  <div id="footer-credit" style="position:fixed; bottom:16px; left:0; width:260px; text-align:center; font-size:0.7rem; color:var(--muted); font-family:'DM Mono',monospace; z-index:5;">
-    crafted by Bret Skinner
-  </div>
   <div class="modal-overlay" id="modal">
     <div class="modal">
       <h3>What did you learn today?</h3>
