@@ -108,7 +108,13 @@
       text-transform: uppercase;
       margin-bottom: 12px;
     }
-    #footer-credit { width: 100%; text-align: center; }
+    #footer-credit { 
+        position: static !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 8px 0 12px;
+        border-top: 1px solid var(--border);
+      }
 
     .streak-card {
       background: linear-gradient(135deg, rgba(124,106,255,0.15), rgba(255,106,155,0.1));
@@ -537,7 +543,7 @@
       </div>
     </div>
   </div>
-    <div id="footer-credit" style="position:fixed; bottom:16px; left:0; width:260px; text-align:center; font-size:0.7rem; color:var(--muted); font-family:'DM Mono',monospace; z-index:5;">
+  <div id="footer-credit" style="position:fixed; bottom:16px; left:0; width:260px; text-align:center; font-size:0.7rem; color:var(--muted); font-family:'DM Mono',monospace; z-index:5;">
     crafted by Bret Skinner
   </div>
   <div class="modal-overlay" id="modal">
