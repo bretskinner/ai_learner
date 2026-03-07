@@ -504,10 +504,23 @@
       .chat-area { width: 100%; }
 
       /* Tighter chat padding on mobile */
-      #messages { padding: 16px 16px 48px; }
+      #messages { padding: 16px 16px 120px; }
       /* mobile spacing by footer */
-      .input-area { padding: 12px 16px 12px; }
-      .bottom-area { padding-bottom: env(safe-area-inset-bottom, 20px); }
+      .bottom-area {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+        z-index: 20;
+      }
+
+      .input-area {
+        border-top: none;
+        padding: 12px 16px;
+      }
       #footer-credit { width: 100% !important; left: 0 !important; text-align: center !important; }
 
       /* Bubbles can be wider on small screens */
