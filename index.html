@@ -827,9 +827,7 @@
           saveHistory();
           removeTyping();
           addMessage('assistant', reply);
-    removeTyping();
-        addMessage('assistant', reply);
-        setTimeout(() => { document.getElementById('messages').scrollTop = 0; }, 50);
+          setTimeout(() => { document.getElementById('messages').scrollTop = 0; }, 100);
         } catch (e) {
           removeTyping();
           addMessage('assistant', 'Could not connect. Is the server running?');
