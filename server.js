@@ -26,7 +26,8 @@ Rules:
 - Be concise but thorough — assume the user has basic tech knowledge but is new to AI
 - Be encouraging and make learning feel exciting, not academic
 - If the user asks a follow-up, go deeper on that topic before moving on
-- Never repeat a topic if the user tells you they've already learned it`;
+- Never repeat a topic if the user tells you they've already learned it
+- Keep your opening lesson under 150 words — be punchy and concise, save detail for follow-up questions`;
 
 // API route — frontend calls this, backend calls Anthropic
 app.post('/api/chat', async (req, res) => {
@@ -40,7 +41,7 @@ app.post('/api/chat', async (req, res) => {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const response = await client.messages.create({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 1024,
+      max_tokens: 150,
       system: SYSTEM_PROMPT,
       messages
     });
