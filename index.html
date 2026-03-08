@@ -507,7 +507,7 @@
       .chat-area { width: 100%; }
 
       /* Tighter chat padding on mobile */
-      #messages { padding: 16px 16px 180px; }
+      #messages { padding: 16px 16px 180px; overflow-y:auto; }
       /* mobile spacing by footer */
       .bottom-area {
         position: fixed;
@@ -827,7 +827,8 @@
           saveHistory();
           removeTyping();
           addMessage('assistant', reply, true);
-          setTimeout(() => { document.getElementById('messages').scrollTop = 0; }, 100);
+          document.getElementById('messages').style.overflowY = 'auto';
+          setTimeout(() => { document.getElementById('messages').scrollTop = 0; }, 500);
         } catch (e) {
           removeTyping();
           addMessage('assistant', 'Could not connect. Is the server running?');
