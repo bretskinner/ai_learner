@@ -470,7 +470,11 @@
       /* Navbar: hide pill, show toggle */
       .nav-pill { display: none; }
       .sidebar-toggle { display: block; }
-      nav { padding: 0 16px; }
+      nav {
+        padding-top: env(safe-area-inset-top, 0px);
+        height: auto;
+        min-height: 56px;
+      }
 
       /* Sidebar becomes a slide-in drawer */
       .sidebar {
@@ -495,11 +499,6 @@
         top: 56px;
         background: rgba(0,0,0,0.5);
         z-index: 40;
-      }
-      nav {
-        padding-top: max(env(safe-area-inset-top), 44px);
-        height: auto;
-        min-height: 56px;
       }
       .sidebar-overlay.open { display: block; }
 
@@ -828,6 +827,9 @@
           saveHistory();
           removeTyping();
           addMessage('assistant', reply);
+          removeTyping();
+        addMessage('assistant', reply);
+        document.getElementById('messages').scrollTop = 0;
         } catch (e) {
           removeTyping();
           addMessage('assistant', 'Could not connect. Is the server running?');
