@@ -728,7 +728,7 @@
     }
 
     // --- CHAT UI ---
-    function addMessage(role, text) {
+    function addMessage(role, text, noScroll = false) {
       const row = document.createElement('div');
       row.className = `message-row ${role === 'user' ? 'user' : ''}`;
 
@@ -743,7 +743,7 @@
       row.appendChild(avatar);
       row.appendChild(bubble);
       document.getElementById('messages').appendChild(row);
-      document.getElementById('messages').scrollTop = 99999;
+      if (!noScroll) document.getElementById('messages').scrollTop = 99999;
     }
 
     function showTyping() {
@@ -826,7 +826,7 @@
           history.push({ role: 'assistant', content: reply });
           saveHistory();
           removeTyping();
-          addMessage('assistant', reply);
+          addMessage('assistant', reply, true);
           setTimeout(() => { document.getElementById('messages').scrollTop = 0; }, 100);
         } catch (e) {
           removeTyping();
