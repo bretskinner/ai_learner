@@ -729,6 +729,18 @@
     }
 
     // --- CHAT UI ---
+    function parseMarkdown(text) {
+      return text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/^## (.+)$/gm, '<h3 style="font-family:\'Syne\',sans-serif;font-size:0.9rem;margin:12px 0 6px;color:var(--text)">$1</h3>')
+        .replace(/^# (.+)$/gm, '<h2 style="font-family:\'Syne\',sans-serif;font-size:1rem;margin:12px 0 6px;color:var(--text)">$1</h2>')
+        .replace(/^- (.+)$/gm, '<li style="margin-left:16px;margin-bottom:4px">$1</li>')
+        .replace(/`(.+?)`/g, '<code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:0.8rem">$1</code>')
+        .replace(/\n\n/g, '<br><br>')
+        .replace(/\n/g, '<br>');
+    }
+
     function addMessage(role, text, noScroll = false) {
       const row = document.createElement('div');
       row.className = `message-row ${role === 'user' ? 'user' : ''}`;
@@ -739,7 +751,7 @@
 
       const bubble = document.createElement('div');
       bubble.className = `bubble ${role === 'user' ? 'user' : 'ai'}`;
-      bubble.textContent = text;
+      bubble.innerHTML = parseMarkdown(text);
 
       row.appendChild(avatar);
       row.appendChild(bubble);
