@@ -41,7 +41,7 @@ app.post('/api/chat', async (req, res) => {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const response = await client.messages.create({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 150,
+      max_tokens: 600,
       system: SYSTEM_PROMPT,
       messages
     });
